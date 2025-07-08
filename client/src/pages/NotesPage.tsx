@@ -32,32 +32,34 @@ export default function NotesPage() {
       setError('Failed to fetch notes');
     }
   };
+const API_BASE = 'https://note-taking-app-d5iq.onrender.com';
 
-  const handleCreate = async () => {
-    if (!content) return;
-    try {
-      const res = await axios.post(
-        'http://localhost:5000/notes',
-        { content },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
-      setNotes([...notes, res.data]);
-      setContent('');
-    } catch {
-      setError('Failed to create note');
-    }
-  };
+const handleCreate = async () => {
+  if (!content) return;
+  try {
+    const res = await axios.post(
+      `${API_BASE}/notes`,
+      { content },
+      { headers: { Authorization: `Bearer ${token}` } }
+    );
+    setNotes([...notes, res.data]);
+    setContent('');
+  } catch {
+    setError('Failed to create note');
+  }
+};
 
-  const handleDelete = async (id: string) => {
-    try {
-      await axios.delete(`http://localhost:5000/notes/${id}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
-      setNotes(notes.filter(note => note._id !== id));
-    } catch {
-      setError('Failed to delete note');
-    }
-  };
+const handleDelete = async (id: string) => {
+  try {
+    await axios.delete(`${API_BASE}/notes/${id}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
+    setNotes(notes.filter(note => note._id !== id));
+  } catch {
+    setError('Failed to delete note');
+  }
+};
+
 
   const handleLogout = () => {
     localStorage.removeItem('token');
