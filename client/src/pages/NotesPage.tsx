@@ -24,8 +24,8 @@ export default function NotesPage() {
 
   const fetchNotes = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/notes', {
-        headers: { Authorization: `Bearer ${token}` },
+     const res = await axios.get('https://note-taking-app-d5iq.onrender.com/notes', {
+    headers: { Authorization: `Bearer ${token}` }
       });
       setNotes(res.data);
     } catch {

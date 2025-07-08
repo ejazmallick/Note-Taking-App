@@ -20,7 +20,7 @@ export default function OtpPage() {
 
     try {
       setLoading(true);
-      const res = await axios.post('http://localhost:5000/auth/verify', { email, otp });
+         const res = await axios.post('https://note-taking-app-d5iq.onrender.com/auth/verify', { email, otp });
       localStorage.setItem('token', res.data.token);
       navigate('/notes');
     } catch (err: any) {

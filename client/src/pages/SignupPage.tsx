@@ -17,7 +17,7 @@ export default function SignupPage() {
 
     try {
       setLoading(true);
-      await axios.post('http://localhost:5000/auth/signup', { email });
+        await axios.post('https://note-taking-app-d5iq.onrender.com/auth/signup', { email });
       navigate('/otp', { state: { email } });
     } catch (err: any) {
       setError(err.response?.data?.message || 'Something went wrong');
