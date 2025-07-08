@@ -14,12 +14,10 @@ import googleAuthRoutes from './auth/google'; // ✅ Google OAuth routes
 const app = express();
 
 // ✅ Enable CORS for frontend
-app.use(
-  cors({
-    origin: 'http://localhost:5173',
-    credentials: true, // Required for cookies/sessions
-  })
-);
+app.use(cors({
+  origin: 'https://note-taking-app-silk-five.vercel.app',
+  credentials: true, // if using cookies/sessions
+}));
 
 // ✅ Middleware to parse JSON and form data
 app.use(express.json());
